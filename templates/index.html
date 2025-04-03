@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitcoin Transaction Checker</title>
+    <script>
+        function checkTransaction() {
+            fetch('/predict', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.text())
+            .then(html => document.body.innerHTML = html);
+        }
+    </script>
+</head>
+<body>
+    <h1>Bitcoin Transaction Checker</h1>
+    <p id="response">{{ message if message else "Click the button to check a transaction" }}</p>
+    <button onclick="checkTransaction()">Check the Current Transaction</button>
+</body>
+</html>
